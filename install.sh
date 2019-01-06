@@ -10,3 +10,5 @@ docker exec -i $1-rabbitmq rabbitmqctl set_permissions -p /DE_development_zed ad
 
 docker exec -it $1-php composer install --no-interaction
 docker exec -it $1-php vendor/bin/install
+docker exec -it $1-php chown -R 1000:1000 .
+docker exec -it $1-php chmod -R 757 ./data
