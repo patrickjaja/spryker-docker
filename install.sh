@@ -7,3 +7,6 @@ docker exec -i $1-rabbitmq rabbitmqctl set_permissions -p /DE_development_zed DE
 docker exec -i $1-rabbitmq rabbitmqctl add_user admin mate20mg
 docker exec -i $1-rabbitmq rabbitmqctl set_user_tags admin administrator
 docker exec -i $1-rabbitmq rabbitmqctl set_permissions -p /DE_development_zed admin ".*" ".*" ".*"
+
+docker exec -it $1-php composer install --no-interaction
+docker exec -it $1-php vendor/bin/install

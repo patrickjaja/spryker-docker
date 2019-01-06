@@ -12,7 +12,8 @@ Docker Setup for Spryker
  
  # Install Spryker
  - PROJECT_NAME=YOUR-PROJECT-NAME docker-compose up -d
- - ./rmq.sh YOUR-PROJECT-NAME
- - docker exec -it spryker-minimal-php composer install --no-interaction
- - docker exec -it spryker-minimal-php vendor/bin/install
- - change hosts file and add 127.0.0.1 zed.de.suite.local and 127.0.0.1 de.suite.local
+ - ./docker/install.sh YOUR-PROJECT-NAME
+ 
+ # Hosts
+ - 127.0.0.1 zed.de.suite.local
+ - 127.0.0.1 de.suite.local
