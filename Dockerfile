@@ -48,7 +48,6 @@ VOLUME ["/usr/local/etc/php/conf.d"]
 
 
 ## jenkins
-
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | \
@@ -60,12 +59,8 @@ RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | \
  && echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections \
  && echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections \
  && apt-get install -y oracle-java8-installer \
- && rm -rf /var/lib/apt/lists/*
-
-RUN apt-get update \
- && apt-get install -y nginx
-
-RUN ln -s /usr/local/bin/php /usr/bin/php
+ && rm -rf /var/lib/apt/lists/* \
+ && ln -s /usr/local/bin/php /usr/bin/php
 
 # Jenkins
 ARG user=jenkins
@@ -133,6 +128,11 @@ RUN chown ${user}:${group} /usr/local/bin/jenkins.sh \
  && chown ${user}:${group} /usr/local/bin/jenkins-support \
  && chmod +x /usr/local/bin/jenkins.sh \
  && chmod +x /usr/local/bin/jenkins-support
+
+# install nginx
+RUN apt-get update \
+ && apt-get install -y nginx \
+ && service nginx restart
 
 #USER ${user}
 
