@@ -19,9 +19,7 @@ RUN pecl install -o -f redis \
  && docker-php-ext-enable redis \
  && docker-php-ext-enable xdebug \
  && docker-php-ext-enable ssh2 \
- && docker-php-ext-install sockets \
- && docker-php-ext-enable opcache \
- && echo "opcache.revalidate_freq=60" >> /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini
+ && docker-php-ext-install sockets
 
 # install composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
@@ -63,6 +61,9 @@ RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | \
  && echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections \
  && apt-get install -y oracle-java8-installer \
  && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update \
+ && apt-get install -y nginx
 
 RUN ln -s /usr/local/bin/php /usr/bin/php
 
