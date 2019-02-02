@@ -1,5 +1,8 @@
 #! /bin/bash -e
 
+# start nginx
+service nginx start
+
 # start FPM
 /usr/local/sbin/php-fpm -c /usr/local/etc/php-fpm.conf -D
 
