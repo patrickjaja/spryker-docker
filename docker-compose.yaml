@@ -1,8 +1,7 @@
 version: '3.5'
 services:
   php:
-    build: .
-    image: spryker-minimal-php
+    image: patrickjajagit/spryker-minimal-php:1.0
     container_name: ${PROJECT_NAME}-php
     env_file:
       - spryker.env

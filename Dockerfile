@@ -131,8 +131,7 @@ RUN chown ${user}:${group} /usr/local/bin/jenkins.sh \
 
 # install nginx
 RUN apt-get update \
- && apt-get install -y nginx \
- && service nginx restart
+ && apt-get install -y nginx
 
 #USER ${user}
 
