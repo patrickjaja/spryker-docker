@@ -8,6 +8,7 @@ services:
     volumes:
       - ../:/data/shop/development
       - ./spryker.conf:/etc/nginx/conf.d/yves_de_spryker.conf
+      - ./php/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
     ports:
       - 8080:8080
       - 80:80
